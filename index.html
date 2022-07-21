@@ -14,12 +14,18 @@
 
         </div>
         <div class="sketch-container">
-            <div class="options">
-                <button id="size-prompt">Size</button>
-                <div>sas</div>
-                <div>ses</div>
-                <div>san</div>
-                <div>sed</div>
+            <div id="options">
+                <div id="sliders">
+                    <div class="slide-container x-slider">
+                        <p id="x-value">X: 16</p>
+                        <input type="range" min="1" max="100" value="16" class="slider" id="sizeX">
+                    </div>
+                    <div class="slide-container y-slider">
+                        <p id="y-value">Y: 16</p>
+                        <input type="range" min="1" max="100" value="16" class="slider" id="sizeY">
+                    </div>
+                </div>
+                <button id="restart">Restart</button>
             </div>
             <div id="grid-container">
             </div>
