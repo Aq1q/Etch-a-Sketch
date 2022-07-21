@@ -4,7 +4,7 @@ const sizeButton = document.getElementById('size-prompt')
 sizeButton.addEventListener('click', () => {
     let size = window.prompt("Type size: (default: 16 max: 64)")
     size = Number(size);
-    if (typeof size != "number"  ){
+    if (typeof size != "number" || size == 0 ){
         size = 16;
     } else if (size > 64) {
         size = 64;
@@ -16,9 +16,12 @@ sizeButton.addEventListener('click', () => {
 
 const gridContainer = document.getElementById("grid-container");
 
-let classList = 'classList' in gridContainer;
-
 function createGrid(size) {
+    
+    while (gridContainer.hasChildNodes()) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+    
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
             gridContainer.appendChild(document.createElement('div'));
