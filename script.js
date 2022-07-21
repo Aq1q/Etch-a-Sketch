@@ -2,14 +2,17 @@
 const sizeButton = document.getElementById('size-prompt')
 
 sizeButton.addEventListener('click', () => {
-    let size = window.prompt("Type size: (default 16x16)")
+    let size = window.prompt("Type size: (default: 16 max: 64)")
     size = Number(size);
-    if (typeof size != "number" ){
+    if (typeof size != "number"  ){
         size = 16;
-    } 
+    } else if (size > 64) {
+        size = 64;
+    }
     createGrid(size);
 }
 )
+
 
 const gridContainer = document.getElementById("grid-container");
 
@@ -27,10 +30,9 @@ function createGrid(size) {
         child.style.width = `calc(100%/${size})`;
         child.style.height = `calc(100%/${size})`;
     }
+    const gridItems = document.querySelectorAll('.grid-item');
+    gridItems.forEach(item => {
+        item.addEventListener('mouseover', () => item.classList.add('item-hovered'))
+    })
 }
 
-const gridItems = document.querySelectorAll('.grid-item');
-
-gridItems.forEach(item => {
-    item.addEventListener('mouseover', () => item.classList.add('item-hovered'))
-})
